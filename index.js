@@ -1,6 +1,6 @@
 var high=4, score=0;
 var readlineSync = require("readline-sync");
-var name = readlineSync.question("Who has awakened the almighty me? ");
+var name = readlineSync.question("Who has awakened the almighty me? State your Name! ");
 var choice = readlineSync.keyInYN("Welcome "+name+"! Would you care for a little quiz?");
 if(!choice)
   console.log("Understandable. Have a great day.");
@@ -13,7 +13,7 @@ else
         "Does he like milk chocolates over Dark chocolates?",
         "Does he like cool things or cute things?",
         "What is the powerhouse of the cell?",
-        "Thicc ___ saves lives."
+        "Which Color is my favourite?"
         ]
   ans = ["Sameer",
         "Rainy",
@@ -22,7 +22,7 @@ else
         "No",
         "Cute",
         "Mitochondria",
-        "Thighs"
+        "Gray"
        ]
        for(var i=0;i<ques.length;i++)
        {
