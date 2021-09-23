@@ -1,9 +1,18 @@
+const chalk = require('chalk');
+const log = console.log;
+
+// Combine styled and normal strings
+log(chalk.blue('Hello') + ' World' + chalk.red('!'));
+
+
+
+
 var high=4, score=0;
 var readlineSync = require("readline-sync");
 var name = readlineSync.question("Who has awakened the almighty me? State your Name! ");
 var choice = readlineSync.keyInYN("Welcome "+name+"! Would you care for a little quiz?");
 if(!choice)
-  console.log("Understandable. Have a great day.");
+  log(chalk.greenBright("Understandable. Have a great day."));
 else
 {
   ques=["What is the name of my creator?",
