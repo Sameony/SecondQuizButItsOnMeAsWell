@@ -1,16 +1,10 @@
 const chalk = require('chalk');
 const log = console.log;
-
-// Combine styled and normal strings
-log(chalk.blue('Hello') + ' World' + chalk.red('!'));
-
-
-
-
 var high=4, score=0;
 var readlineSync = require("readline-sync");
-var name = readlineSync.question("Who has awakened the almighty me? State your Name! ");
-var choice = readlineSync.keyInYN("Welcome "+name+"! Would you care for a little quiz?");
+log(chalk.blueBright.bold("Who has awakened the almighty me? State your Name!"));
+var name = readlineSync.question();
+var choice = readlineSync.keyInYN(chalk.blue("Welcome "+chalk.red(name)+"! Would you care for a little quiz?"));
 if(!choice)
   log(chalk.greenBright("Understandable. Have a great day."));
 else
@@ -39,22 +33,24 @@ else
          if(userAns.toUpperCase()===ans[i].toUpperCase())
         {
           score+=1;
-          console.log("DING DING DING! Correct answer!!");
+          console.log(chalk.greenBright("DING DING DING! Correct answer!!"));
         }
         else
-          console.log("OOPS! Wrong answer");
-        var con=readlineSync.keyInYN("Would you like to continue?");
+          console.log(chalk.red("OOPS! Wrong answer"));
+        log(chalk.blueBright("The Correct answer is: ")+chalk.greenBright(ans[i]));
+        var con=readlineSync.keyInYN(chalk.blueBright("Would you like to continue?"));
         if(!con)
           break;
        }
-       console.log("Your score is: "+score);
+       console.log(chalk.green.bgBlack("Your score is: "+score));
        if(score>=high)
         {  
-          console.log("It is a new high score!!!");
+          console.log(chalk.greenBright("It is a new high score!!!"));
+          log("You beat the previous high score by "+chalk.greenBright(score-high)+" points!");
           high=score;
         }
         else
         {
-          console.log("Oooh!you missed the high score by "+(high-score)+" points!");
+          log("Oooh!you missed the high score by "+chalk.red(high-score)+" points!");
         }
 }
