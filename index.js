@@ -4,7 +4,15 @@ var high=4, score=0;
 var readlineSync = require("readline-sync");
 log(chalk.blueBright.bold("Who has awakened the almighty me? State your Name!"));
 var name = readlineSync.question();
-var choice = readlineSync.keyInYN(chalk.blue("Welcome "+chalk.red(name)+"! Would you care for a little quiz?"));
+var choice = properKeyInYN(readlineSync.question(chalk.blue("Welcome "+chalk.red(name)+"! Would you care for a little quiz? [y/n]:")));
+
+function properKeyInYN(answerOfUser){
+  if(answerOfUser.toUpperCase()==="Y")
+    return true;
+  return false;
+}
+
+
 if(!choice)
   log(chalk.greenBright("Understandable. Have a great day."));
 else
@@ -38,7 +46,7 @@ else
         else
           console.log(chalk.red("OOPS! Wrong answer"));
         log(chalk.blueBright("The Correct answer is: ")+chalk.greenBright(ans[i]));
-        var con=readlineSync.keyInYN(chalk.blueBright("Would you like to continue?"));
+        var con=properKeyInYN(readlineSync.question(chalk.blueBright("Would you like to continue? [Y/N]: ")));
         if(!con)
           break;
        }
