@@ -1,6 +1,14 @@
 const chalk = require('chalk');
 const log = console.log;
-var high=4, score=0;
+var score=0;
+var high = [{
+  Name:"Sameer",
+  Score: 2,
+},
+{
+  Name: "Sahil",
+  Score: 4,
+}]
 var readlineSync = require("readline-sync");
 log(chalk.blueBright.bold("Who has awakened the almighty me? State your Name!"));
 var name = readlineSync.question();
@@ -51,14 +59,36 @@ else
           break;
        }
        console.log(chalk.green.bgBlack("Your score is: "+score));
-       if(score>=high)
+       //High Score Evaluation 
+       
+       var max_Score=0;
+       for (let i = 0; i < high.length; i++) {
+         if(high[i].Score > max_Score)
+         {
+           max_Score=high[i].Score;
+         }
+}
+let person = {
+  Name : name,
+  Score  : score,
+};
+      high.push(person);
+       
+       if(score>=max_Score)
         {  
           console.log(chalk.greenBright("It is a new high score!!!"));
-          log("You beat the previous high score by "+chalk.greenBright(score-high)+" points!");
-          high=score;
+          log("You beat the previous high score by "+chalk.greenBright(score-max_Score)+" points!");
+          
         }
         else
         {
           log("Oooh!you missed the high score by "+chalk.red(high-score)+" points!");
         }
+}
+console.log(chalk.bold.black.bgWhite("High Scores: "))
+for(let i=0;i<high.length;i++)
+{
+  
+  console.log("\n Name: "+high[i].Name+"\t Score: "+high[i].Score);
+  
 }
